@@ -4,41 +4,56 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;
-    [SerializeField] private float jumpForce = 10f;
+    [Header("Movement")]
+    [SerializeField] private float speed = 6f;
+    [SerializeField] private float jumpForce = 11f;
+
     [Header("Wall Movement")]
     [SerializeField] private float wallHoldDuration = 0.15f;
     [SerializeField] private float wallFallSpeed = 3f;
     [SerializeField] private float wallJumpThrowbackForce = 4f;
     [SerializeField] private float wallJumpControlLockDuration = 0.15f;
+
+    [Header("Jump Assist")]
+    [SerializeField] private float coyoteTime = 0.15f;
+    [SerializeField] private float jumpBufferTime = 0.15f;
+
+    [Header("Better Jump")]
+    [SerializeField] private float fallMultiplier = 2f;
+    [SerializeField] private float lowJumpMultiplier = 2.5f;
+
     [SerializeField] private Rigidbody2D rb;
-    // [SerializeField] private Animator anim;
-    private readonly HashSet<Collider2D> groundContacts = new HashSet<Collider2D>();
-    private readonly Dictionary<Collider2D, float> wallContacts = new Dictionary<Collider2D, float>();
+
+    private readonly HashSet<Collider2D> groundContacts = new();
+    private readonly Dictionary<Collider2D, float> wallContacts = new();
+
     private bool moveRight = true;
     private float currentMoveInput;
     private float wallHoldTimer;
     private float wallJumpControlLockTimer;
-    private bool jumpRequested;
 
-    public float MoveDirection => Mathf.Abs(currentMoveInput) > 0.01f ? Mathf.Sign(currentMoveInput) : 0f;
+    private float coyoteTimer;
+    private float jumpBufferTimer;
+
+    public float MoveDirection =>
+        Mathf.Abs(currentMoveInput) > 0.01f
+            ? Mathf.Sign(currentMoveInput)
+            : 0f;
+
     private bool IsGrounded => groundContacts.Count > 0;
     private bool IsTouchingWall => wallContacts.Count > 0;
-    
-    void Awake()
+
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        // anim = GetComponent<Animator>();
     }
 
-    void Update()
+    private void Update()
     {
         if (Time.timeScale == 0f)
         {
             currentMoveInput = 0f;
-            jumpRequested = false;
             rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
-            // anim.SetBool("run", false);
             return;
         }
 
@@ -53,45 +68,60 @@ public class PlayerController : MonoBehaviour
             Flip();
         }
 
-        // anim.SetBool("run", Mathf.Abs(currentMoveInput) > 0.01f);
-        // anim.SetBool("grounded", IsGrounded);
+        if (IsGrounded)
+        {
+            coyoteTimer = coyoteTime;
+        }
+        else
+        {
+            coyoteTimer -= Time.deltaTime;
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            jumpRequested = true;
+            jumpBufferTimer = jumpBufferTime;
+        }
+        else
+        {
+            jumpBufferTimer -= Time.deltaTime;
         }
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (Time.timeScale == 0f)
         {
             return;
         }
 
-        wallJumpControlLockTimer = Mathf.Max(0f, wallJumpControlLockTimer - Time.fixedDeltaTime);
+        wallJumpControlLockTimer =
+            Mathf.Max(0f, wallJumpControlLockTimer - Time.fixedDeltaTime);
 
-        if (jumpRequested)
+        if (jumpBufferTimer > 0f)
         {
-            if (IsGrounded)
+            if (coyoteTimer > 0f)
             {
                 Jump();
+                jumpBufferTimer = 0f;
+                coyoteTimer = 0f;
             }
             else if (CanWallJump())
             {
                 WallJump();
+                jumpBufferTimer = 0f;
             }
-
-            jumpRequested = false;
         }
 
         if (wallJumpControlLockTimer > 0f)
         {
+            ApplyBetterJump();
             return;
         }
 
         float wallNormalX = GetWallNormalX();
-        bool pressingIntoWall = !IsGrounded
+
+        bool pressingIntoWall =
+            !IsGrounded
             && IsTouchingWall
             && Mathf.Abs(currentMoveInput) > 0.01f
             && Mathf.Sign(currentMoveInput) == -Mathf.Sign(wallNormalX);
@@ -103,39 +133,71 @@ public class PlayerController : MonoBehaviour
             if (verticalSpeed <= 0f)
             {
                 wallHoldTimer += Time.fixedDeltaTime;
+
                 verticalSpeed = wallHoldTimer < wallHoldDuration
                     ? 0f
                     : Mathf.Min(verticalSpeed, -wallFallSpeed);
             }
 
             rb.linearVelocity = new Vector2(0f, verticalSpeed);
+
+            ApplyBetterJump();
             return;
         }
 
         wallHoldTimer = 0f;
-        rb.linearVelocity = new Vector2(currentMoveInput * speed, rb.linearVelocity.y);
+
+        rb.linearVelocity = new Vector2(
+            currentMoveInput * speed,
+            rb.linearVelocity.y);
+
+        ApplyBetterJump();
     }
 
-    void Jump()
+    private void ApplyBetterJump()
     {
-        // anim.SetTrigger("jump");
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        if (rb.linearVelocity.y < 0)
+        {
+            rb.linearVelocity += Vector2.up *
+                                 Physics2D.gravity.y *
+                                 (fallMultiplier - 1f) *
+                                 Time.fixedDeltaTime;
+        }
+        else if (rb.linearVelocity.y > 0 &&
+                 !Input.GetKey(KeyCode.Space))
+        {
+            rb.linearVelocity += Vector2.up *
+                                 Physics2D.gravity.y *
+                                 (lowJumpMultiplier - 1f) *
+                                 Time.fixedDeltaTime;
+        }
+    }
+
+    private void Jump()
+    {
+        rb.linearVelocity = new Vector2(
+            rb.linearVelocity.x,
+            jumpForce);
+
         groundContacts.Clear();
     }
 
-    void WallJump()
+    private void WallJump()
     {
         float jumpDirection = Mathf.Sign(GetWallNormalX());
-        float throwbackForce = Mathf.Min(wallJumpThrowbackForce, jumpForce * 0.9f);
+
+        float throwbackForce =
+            Mathf.Min(wallJumpThrowbackForce, jumpForce * 0.9f);
 
         rb.linearVelocity = new Vector2(
             jumpDirection * throwbackForce,
             jumpForce);
+
         wallHoldTimer = 0f;
         wallJumpControlLockTimer = wallJumpControlLockDuration;
     }
 
-    bool CanWallJump()
+    private bool CanWallJump()
     {
         if (!IsTouchingWall || Mathf.Abs(currentMoveInput) < 0.01f)
         {
@@ -143,42 +205,44 @@ public class PlayerController : MonoBehaviour
         }
 
         float directionAwayFromWall = Mathf.Sign(GetWallNormalX());
+
         return Mathf.Sign(currentMoveInput) == directionAwayFromWall;
     }
 
-    void Flip()
+    private void Flip()
     {
         moveRight = !moveRight;
-        Vector3 scaler = transform.localScale;
-        scaler.x *= -1;
-        transform.localScale = scaler;
+
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Trap"))
         {
-            // anim.SetTrigger("die");
-            // GameManager.Instance.GameOver();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(
+                SceneManager.GetActiveScene().buildIndex);
+
             return;
         }
 
         UpdateSurfaceContact(collision);
     }
 
-    void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         UpdateSurfaceContact(collision);
     }
 
-    void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         groundContacts.Remove(collision.collider);
         wallContacts.Remove(collision.collider);
     }
 
-    void UpdateSurfaceContact(Collision2D collision)
+    private void UpdateSurfaceContact(Collision2D collision)
     {
         if (!collision.gameObject.CompareTag("Ground"))
         {
@@ -220,7 +284,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    float GetWallNormalX()
+    private float GetWallNormalX()
     {
         foreach (float wallNormalX in wallContacts.Values)
         {
