@@ -2,35 +2,45 @@ using UnityEngine;
 
 public class Parallax : MonoBehaviour
 {
-    [SerializeField] private float speed = 1f;   // Movement speed
-    [SerializeField] private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
-    [SerializeField] private PlayerController player;
-    public float resetX = -15f;
-    public float startX = 15f;
+    [SerializeField] private Transform player;
+    [SerializeField] private float parallaxSpeed = 0.5f;
+    [SerializeField] private float movementThreshold = 0.01f;
 
-    private void Awake()
+    private Vector3 lastPlayerPosition;
+
+    void Awake()
     {
-        if (spriteRenderer == null)
-        {
-            spriteRenderer = GetComponent<SpriteRenderer>();
-        }
-
         if (player == null)
         {
-            player = FindFirstObjectByType<PlayerController>();
+            GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+
+            if (playerObject != null)
+            {
+                player = playerObject.transform;
+            }
+        }
+
+        if (player != null)
+        {
+            lastPlayerPosition = player.position;
         }
     }
 
-    void Update()
+    void LateUpdate()
     {
-        if (player != null && player.MoveDirection != 0f)
+        if (player == null)
         {
-            transform.Translate(Vector3.right * player.MoveDirection * speed * Time.deltaTime);
+            return;
         }
 
-        if (spriteRenderer != null && transform.position.x <= spriteRenderer.bounds.size.x * -1)
+        Vector3 currentPlayerPosition = player.position;
+        float deltaX = currentPlayerPosition.x - lastPlayerPosition.x;
+
+        if (Mathf.Abs(deltaX) > movementThreshold)
         {
-            transform.position += Vector3.right * spriteRenderer.bounds.size.x * 2f;
+            transform.position += new Vector3(-deltaX * parallaxSpeed, 0f, 0f);
         }
+
+        lastPlayerPosition = currentPlayerPosition;
     }
 }

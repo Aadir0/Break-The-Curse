@@ -1,0 +1,234 @@
+fileFormatVersion: 2
+guid: 486bd78984020a04d902dfcb299a3e27
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5360468206098842899
+    second: take_off_06_0
+  - first:
+      213: 7400855872583893934
+    second: take_off_06_1
+  - first:
+      213: 8723493321930230374
+    second: take_off_06_2
+  - first:
+      213: 1452930120961204383
+    second: take_off_06_3
+  - first:
+      213: -1672488295186231295
+    second: take_off_06_4
+  - first:
+      213: 336955570273104494
+    second: take_off_06_5
+  - first:
+      213: -8480996659236317072
+    second: take_off_06_6
+  - first:
+      213: 5365718410560205451
+    second: take_off_06_7
+  - first:
+      213: -645774498658837804
+    second: take_off_06_8
+  - first:
+      213: -8973131303328619757
+    second: take_off_06_9
+  - first:
+      213: -7485164348026074329
+    second: take_off_06_10
+  - first:
+      213: 9046104978607200081
+    second: take_off_06_11
+  - first:
+      213: -7020381871956973362
+    second: take_off_06_12
+  - first:
+      213: -7983882980818279747
+    second: take_off_06_13
+  - first:
+      213: -907782784489345914
+    second: take_off_06_14
+  - first:
+      213: 7799214617781037387
+    second: take_off_06_15
+  - first:
+      213: 6167536873041508119
+    second: take_off_06_16
+  - first:
+      213: 6080647315373030167
+    second: take_off_06_17
+  - first:
+      213: -9112447242473608725
+    second: take_off_06_18
+  - first:
+      213: -4926174761430583362
+    second: take_off_06_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 400
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: take_off_06_19
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 4
+        width: 303
+        height: 204
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb77f6b8726b2abb0800000000000000
+      internalID: -4926174761430583362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5de39a68fca00684eb111f51f9ca64aa
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      take_off_06_0: -5360468206098842899
+      take_off_06_1: 7400855872583893934
+      take_off_06_10: -7485164348026074329
+      take_off_06_11: 9046104978607200081
+      take_off_06_12: -7020381871956973362
+      take_off_06_13: -7983882980818279747
+      take_off_06_14: -907782784489345914
+      take_off_06_15: 7799214617781037387
+      take_off_06_16: 6167536873041508119
+      take_off_06_17: 6080647315373030167
+      take_off_06_18: -9112447242473608725
+      take_off_06_19: -4926174761430583362
+      take_off_06_2: 8723493321930230374
+      take_off_06_3: 1452930120961204383
+      take_off_06_4: -1672488295186231295
+      take_off_06_5: 336955570273104494
+      take_off_06_6: -8480996659236317072
+      take_off_06_7: 5365718410560205451
+      take_off_06_8: -645774498658837804
+      take_off_06_9: -8973131303328619757
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
