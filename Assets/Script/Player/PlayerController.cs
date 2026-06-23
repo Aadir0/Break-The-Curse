@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,6 +17,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float groundCoyoteTime = 0.1f;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator anim;
+    [SerializeField] private GameObject bloodEffectPrefab;
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip runningClip;
+    [SerializeField] private AudioClip jumpClip;
+    [SerializeField] private AudioClip deathClip;
     private readonly HashSet<Collider2D> groundContacts = new HashSet<Collider2D>();
     private readonly Dictionary<Collider2D, float> wallContacts = new Dictionary<Collider2D, float>();
     private bool moveRight = true;
@@ -31,6 +38,7 @@ public class PlayerController : MonoBehaviour
     private bool jumpRequested;
     private bool restartedJumpAnimationOnWallContact;
     private bool wasGroundedLastFrame;
+    private bool isPlayingRunSound;
 
     private static readonly int JumpTrigger = Animator.StringToHash("jump");
     private static readonly int JumpState = Animator.StringToHash("jump");
@@ -42,6 +50,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         anim.cullingMode = AnimatorCullingMode.AlwaysAnimate;
         wasGroundedLastFrame = IsGrounded;
     }
@@ -103,6 +112,27 @@ public class PlayerController : MonoBehaviour
 
         anim.SetBool("run", Mathf.Abs(currentMoveInput) > 0.01f);
         anim.SetBool("grounded", IsGrounded && jumpGroundLockTimer <= 0f);
+
+        // Handle running sound
+        if (IsGrounded && Mathf.Abs(currentMoveInput) > 0.01f)
+        {
+            if (!isPlayingRunSound && runningClip != null)
+            {
+                audioSource.clip = runningClip;
+                audioSource.loop = true;
+                audioSource.Play();
+                isPlayingRunSound = true;
+            }
+        }
+        else
+        {
+            if (isPlayingRunSound)
+            {
+                audioSource.loop = false;
+                audioSource.Stop();
+                isPlayingRunSound = false;
+            }
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -182,6 +212,7 @@ public class PlayerController : MonoBehaviour
         groundCoyoteTimer = 0f;
         jumpGroundLockTimer = 0.12f;
         restartedJumpAnimationOnWallContact = false;
+        PlayJumpSound();
     }
 
     void WallJump()
@@ -197,6 +228,7 @@ public class PlayerController : MonoBehaviour
         wallJumpRecoveryTimer = wallJumpControlLockDuration;
         wallJumpCoyoteTimer = 0f;
         restartedJumpAnimationOnWallContact = false;
+        PlayJumpSound();
     }
 
     bool CanWallJump()
@@ -226,13 +258,30 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Trap"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            PlayDeathSound();
+            anim.SetTrigger("die");
+            Instantiate(bloodEffectPrefab, transform.position, Quaternion.identity);
+            Invoke(nameof(ReloadScene), 1f);
             return;
         }
 
         UpdateSurfaceContact(collision);
     }
-
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            PlayDeathSound();
+            anim.SetTrigger("die");
+            Instantiate(bloodEffectPrefab, transform.position, Quaternion.identity);
+            Invoke(nameof(ReloadScene), 1f);
+            return;
+        }
+    }
+    void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
     void OnCollisionStay2D(Collision2D collision)
     {
         UpdateSurfaceContact(collision);
@@ -271,7 +320,9 @@ public class PlayerController : MonoBehaviour
                 hasGroundContact = true;
             }
 
-            if (Mathf.Abs(contact.normal.x) > 0.5f)
+            // Only allow wall contact on slanted surfaces, not pure vertical boundaries
+            // Check that the surface has both horizontal and vertical components
+            if (Mathf.Abs(contact.normal.x) > 0.5f && Mathf.Abs(contact.normal.y) > 0.1f)
             {
                 wallNormalX = contact.normal.x;
             }
@@ -363,5 +414,23 @@ public class PlayerController : MonoBehaviour
     bool HasWallForJump()
     {
         return Mathf.Abs(GetWallNormalX()) > 0.01f;
+    }
+
+    void PlayJumpSound()
+    {
+        if (jumpClip != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(jumpClip);
+        }
+    }
+
+    void PlayDeathSound()
+    {
+        if (deathClip != null && audioSource != null)
+        {
+            isPlayingRunSound = false;
+            audioSource.loop = false;
+            audioSource.PlayOneShot(deathClip);
+        }
     }
 }

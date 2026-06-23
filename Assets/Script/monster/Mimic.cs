@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class Mimic : MonoBehaviour
 {
@@ -111,7 +112,7 @@ public class Mimic : MonoBehaviour
         transformBackRoutine = StartCoroutine(TransformBackAnimationRoutine());
     }
 
-    System.Collections.IEnumerator TransformAnimationRoutine()
+    IEnumerator TransformAnimationRoutine()
     {
         animator.SetBool(TransformBool, true);
         animator.SetBool(TransformBackBool, false);
@@ -122,7 +123,7 @@ public class Mimic : MonoBehaviour
         transformRoutine = null;
     }
 
-    System.Collections.IEnumerator TransformBackAnimationRoutine()
+    IEnumerator TransformBackAnimationRoutine()
     {
         animator.SetBool(TransformBool, false);
         animator.SetBool(TransformBackBool, true);
@@ -150,7 +151,7 @@ public class Mimic : MonoBehaviour
         attackRoutine = StartCoroutine(AttackAndKillPlayer());
     }
 
-    System.Collections.IEnumerator AttackAndKillPlayer()
+    IEnumerator AttackAndKillPlayer()
     {
         yield return new WaitForSeconds(attackDuration);
 
@@ -167,6 +168,5 @@ public class Mimic : MonoBehaviour
         }
 
         playerKilled = true;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
