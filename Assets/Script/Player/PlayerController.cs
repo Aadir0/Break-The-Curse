@@ -14,15 +14,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float wallJumpCoyoteTime = 0.1f;
     [SerializeField] private int wallJumpAnimationRestartBeforeFrame = 3;
     [SerializeField] private float groundCoyoteTime = 0.1f;
-    [SerializeField] private GameObject jumpEffect;
-    [SerializeField] private GameObject landingEffect;
-    [SerializeField] private Vector3 effectSpawnOffset = new Vector3(0f, -0.2f, 0f);
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator anim;
     private readonly HashSet<Collider2D> groundContacts = new HashSet<Collider2D>();
     private readonly Dictionary<Collider2D, float> wallContacts = new Dictionary<Collider2D, float>();
     private bool moveRight = true;
-    private float currentMoveInput;
+    public float currentMoveInput;
+    private float scrollMoveInput;
     private float wallHoldTimer;
     private float wallJumpControlLockTimer;
     private float wallJumpRecoveryTimer;
@@ -33,7 +31,6 @@ public class PlayerController : MonoBehaviour
     private bool jumpRequested;
     private bool restartedJumpAnimationOnWallContact;
     private bool wasGroundedLastFrame;
-    private bool hasLeftGround;
 
     private static readonly int JumpTrigger = Animator.StringToHash("jump");
     private static readonly int JumpState = Animator.StringToHash("jump");
@@ -63,19 +60,37 @@ public class PlayerController : MonoBehaviour
 
         jumpGroundLockTimer = Mathf.Max(0f, jumpGroundLockTimer - Time.deltaTime);
 
-        if (!IsGrounded)
-        {
-            hasLeftGround = true;
-        }
-
-        if (!wasGroundedLastFrame && IsGrounded && hasLeftGround)
-        {
-            PlayEffect(landingEffect);
-        }
-
         wasGroundedLastFrame = IsGrounded;
 
-        currentMoveInput = Input.GetAxisRaw("Horizontal");
+        if (Input.GetMouseButtonDown(2))
+        {
+            scrollMoveInput = 0f;
+        }
+
+        float scrollDelta = Input.mouseScrollDelta.y;
+
+        if (scrollDelta > 0.01f)
+        {
+            scrollMoveInput = 1f;
+        }
+        else if (scrollDelta < -0.01f)
+        {
+            scrollMoveInput = -1f;
+        }
+
+        // Check A and D keys for movement (takes priority over scroll)
+        if (Input.GetKey(KeyCode.A))
+        {
+            currentMoveInput = -1f;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            currentMoveInput = 1f;
+        }
+        else
+        {
+            currentMoveInput = scrollMoveInput;
+        }
 
         if (currentMoveInput > 0.01f && !moveRight)
         {
@@ -162,7 +177,6 @@ public class PlayerController : MonoBehaviour
     {
         anim.ResetTrigger(JumpTrigger);
         anim.Play(JumpState, 0, 0f);
-        PlayEffect(jumpEffect);
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         groundContacts.Clear();
         groundCoyoteTimer = 0f;
@@ -217,18 +231,6 @@ public class PlayerController : MonoBehaviour
         }
 
         UpdateSurfaceContact(collision);
-    }
-
-    void PlayEffect(GameObject effectPrefab)
-    {
-        if (effectPrefab == null)
-        {
-            return;
-        }
-
-        Vector3 spawnPosition = transform.TransformPoint(effectSpawnOffset);
-        GameObject spawnedEffect = Instantiate(effectPrefab, spawnPosition, Quaternion.identity);
-        Destroy(spawnedEffect, 2f);
     }
 
     void OnCollisionStay2D(Collision2D collision)

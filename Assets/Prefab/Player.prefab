@@ -263,5 +263,7 @@ MonoBehaviour:
   wallJumpThrowbackForce: 4
   wallJumpControlLockDuration: 0.15
   wallJumpCoyoteTime: 0.2
+  wallJumpAnimationRestartBeforeFrame: 3
+  groundCoyoteTime: 0.08
   rb: {fileID: 1158656099795969181}
   anim: {fileID: 3608252955662898529}
