@@ -1,0 +1,392 @@
+fileFormatVersion: 2
+guid: 45d992352a68ae5419a70d0164e291e0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5119314027489291061
+    second: portal_png-removebg-preview_0
+  - first:
+      213: 4846506660067380426
+    second: portal_png-removebg-preview_1
+  - first:
+      213: -1609003821144297672
+    second: portal_png-removebg-preview_2
+  - first:
+      213: -514449187608366128
+    second: portal_png-removebg-preview_3
+  - first:
+      213: -4363733789953761876
+    second: portal_png-removebg-preview_4
+  - first:
+      213: -647834050851736285
+    second: portal_png-removebg-preview_5
+  - first:
+      213: 693810062750259579
+    second: portal_png-removebg-preview_6
+  - first:
+      213: 277662956247695837
+    second: portal_png-removebg-preview_7
+  - first:
+      213: -1515912954866748399
+    second: portal_png-removebg-preview_8
+  - first:
+      213: -4215922735382921435
+    second: portal_png-removebg-preview_9
+  - first:
+      213: 3656780482015691322
+    second: portal_png-removebg-preview_10
+  - first:
+      213: 8065500329126910679
+    second: portal_png-removebg-preview_11
+  - first:
+      213: 6103607456761853061
+    second: portal_png-removebg-preview_12
+  - first:
+      213: -8461483118373360100
+    second: portal_png-removebg-preview_13
+  - first:
+      213: 4083464469676456695
+    second: portal_png-removebg-preview_14
+  - first:
+      213: -6391266211289058345
+    second: portal_png-removebg-preview_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: portal_png-removebg-preview_0
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 343
+        width: 76
+        height: 146
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc493d9e30b84f8b0800000000000000
+      internalID: -5119314027489291061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: portal_png-removebg-preview_1
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 341
+        width: 80
+        height: 147
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acc81e22120424340800000000000000
+      internalID: 4846506660067380426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: portal_png-removebg-preview_2
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 337
+        width: 81
+        height: 154
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83fa27eac8baba9e0800000000000000
+      internalID: -1609003821144297672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: portal_png-removebg-preview_3
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 170
+        width: 83
+        height: 158
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d37d95803f4cd8f0800000000000000
+      internalID: -514449187608366128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: portal_png-removebg-preview_4
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 172
+        width: 81
+        height: 150
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: caddf63fc37e073c0800000000000000
+      internalID: -4363733789953761876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: portal_png-removebg-preview_5
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 171
+        width: 85
+        height: 149
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3257495fc5e6207f0800000000000000
+      internalID: -647834050851736285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: portal_png-removebg-preview_9
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 14
+        width: 73
+        height: 136
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52ff10deb980e75c0800000000000000
+      internalID: -4215922735382921435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: portal_png-removebg-preview_11
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 12
+        width: 73
+        height: 141
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dad76501d96eef60800000000000000
+      internalID: 8065500329126910679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: portal_png-removebg-preview_12
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 10
+        width: 76
+        height: 146
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58437b4c4ae54b450800000000000000
+      internalID: 6103607456761853061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: bb690ec46344fa945929eb54e837fef9
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      portal_png-removebg-preview_0: -5119314027489291061
+      portal_png-removebg-preview_1: 4846506660067380426
+      portal_png-removebg-preview_10: 3656780482015691322
+      portal_png-removebg-preview_11: 8065500329126910679
+      portal_png-removebg-preview_12: 6103607456761853061
+      portal_png-removebg-preview_13: -8461483118373360100
+      portal_png-removebg-preview_14: 4083464469676456695
+      portal_png-removebg-preview_15: -6391266211289058345
+      portal_png-removebg-preview_2: -1609003821144297672
+      portal_png-removebg-preview_3: -514449187608366128
+      portal_png-removebg-preview_4: -4363733789953761876
+      portal_png-removebg-preview_5: -647834050851736285
+      portal_png-removebg-preview_6: 693810062750259579
+      portal_png-removebg-preview_7: 277662956247695837
+      portal_png-removebg-preview_8: -1515912954866748399
+      portal_png-removebg-preview_9: -4215922735382921435
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
