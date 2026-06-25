@@ -49107,6 +49107,15 @@ MonoBehaviour:
   CreditsPanel: {fileID: 0}
   buttonsToDisableOnPause: []
   pauseMenuUI: {fileID: 2729414505858961127}
+  playHoverObject: {fileID: 0}
+  playHoverColor: {r: 1, g: 0.55, b: 0.55, a: 1}
+  playHoverTag: Play
+  usePlayHoverTag: 1
+  playHoverLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  usePlayHoverLayer: 0
+  StoryPanel: {fileID: 0}
 --- !u!224 &5817908038569196509
 RectTransform:
   m_ObjectHideFlags: 0
@@ -49251,7 +49260,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -940}
-  m_SizeDelta: {x: 0, y: 180}
+  m_SizeDelta: {x: 0, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6420150876546482310
 MonoBehaviour:
@@ -49398,7 +49407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -49467,18 +49476,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 843c4c2833c56c5448e46e4767278e0d, type: 3}
-    m_FontSize: 100
+    m_FontSize: 200
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 1
-    m_MaxSize: 100
+    m_MaxSize: 200
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You broke the "Curse"
+  m_Text: You broke the "Curse", Reach the portal to go to the next level.
 --- !u!114 &7165833003233322922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49913,7 +49922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

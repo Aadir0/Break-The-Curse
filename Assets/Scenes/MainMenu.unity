@@ -2994,7 +2994,7 @@ MonoBehaviour:
   - R - Restart If you are stuck somewhere
   - E - Change the worlds   also   In the Inverted World there will be an Orb chasing
     you
-  - Each level will have hint timer of 60 seconds after taht you can press H to get
+  - Each level will have hint timer of 60 seconds after that you can press H to get
     a hint to clear the level
   pauseGameWhileShowing: 1
 --- !u!1 &3657879115057552567

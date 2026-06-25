@@ -3,18 +3,33 @@ using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
+    private const int FinalLevelBuildIndex = 3;
+
     [SerializeField] private GameObject winCanvas;
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !SceneManager.GetActiveScene().name.Equals("Level 3"))
+        if (!other.CompareTag("Player"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            return;
         }
-        
-        if (other.CompareTag("Player") && SceneManager.GetActiveScene().buildIndex == 3)
+
+        int activeBuildIndex = SceneManager.GetActiveScene().buildIndex;
+
+        if (activeBuildIndex == FinalLevelBuildIndex)
         {
-            winCanvas.SetActive(true);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if (winCanvas != null)
+            {
+                winCanvas.SetActive(true);
+            }
+
+            SceneManager.LoadScene(activeBuildIndex + 1);
+            return;
+        }
+
+        if (activeBuildIndex < FinalLevelBuildIndex)
+        {
+            SceneManager.LoadScene(activeBuildIndex + 1);
         }
     }
 }

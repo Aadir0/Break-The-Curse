@@ -107,10 +107,12 @@ public class Inversion : MonoBehaviour
                     winningScene.SetActive(false);
                 }
 
-                if (!winningSequenceTriggered && portal != null)
+                if (CanHidePortal() && portal != null)
                 {
                     portal.SetActive(false);
                 }
+
+                ShowPortalIfCrystalWinComplete();
 
                 SpawnOrb();
             }
@@ -129,10 +131,12 @@ public class Inversion : MonoBehaviour
                     winningScene.SetActive(false);
                 }
 
-                if (!winningSequenceTriggered && portal != null)
+                if (CanHidePortal() && portal != null)
                 {
                     portal.SetActive(false);
                 }
+
+                ShowPortalIfCrystalWinComplete();
             }
         }
 
@@ -219,9 +223,22 @@ public class Inversion : MonoBehaviour
             winningScene.SetActive(false);
         }
 
-        if (!winningSequenceTriggered && portal != null)
+        if (CanHidePortal() && portal != null)
         {
             portal.SetActive(false);
+        }
+    }
+
+    private bool CanHidePortal()
+    {
+        return !winningSequenceTriggered && !Crystal.IsCrystalWinCompleteInActiveScene;
+    }
+
+    private void ShowPortalIfCrystalWinComplete()
+    {
+        if (Crystal.IsCrystalWinCompleteInActiveScene && portal != null)
+        {
+            portal.SetActive(true);
         }
     }
 }

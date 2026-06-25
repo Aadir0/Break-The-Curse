@@ -9,6 +9,12 @@ public class Crystal : MonoBehaviour
     private static GameObject levelWinCanvas;
     private static GameObject levelNextRoomPortal;
     private static int resetSceneHandle = -1;
+    private static int completedWinSceneBuildIndex = -1;
+
+    public static bool IsCrystalWinComplete { get; private set; }
+    public static bool IsCrystalWinCompleteInActiveScene =>
+        IsCrystalWinComplete
+        && SceneManager.GetActiveScene().buildIndex == completedWinSceneBuildIndex;
 
     [SerializeField] private int crystalsRequiredToWin = 5;
     [SerializeField] private int firstCrystalLevelBuildIndex = 1;
@@ -30,6 +36,8 @@ public class Crystal : MonoBehaviour
             resetSceneHandle = activeScene.handle;
             levelWinCanvas = null;
             levelNextRoomPortal = null;
+            IsCrystalWinComplete = false;
+            completedWinSceneBuildIndex = -1;
         }
 
         crystalId = GetCrystalId(activeScene);
@@ -38,6 +46,7 @@ public class Crystal : MonoBehaviour
 
         if (activeScene.buildIndex == winLevelBuildIndex && CollectedCrystalIds.Count >= crystalsRequiredToWin)
         {
+            CompleteCrystalWin(activeScene.buildIndex);
             RestoreCompletedLevelState();
         }
 
@@ -66,6 +75,7 @@ public class Crystal : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == winLevelBuildIndex
             && CollectedCrystalIds.Count >= crystalsRequiredToWin)
         {
+            CompleteCrystalWin(SceneManager.GetActiveScene().buildIndex);
             SetWinObjectsActive(true);
         }
 
@@ -131,6 +141,12 @@ public class Crystal : MonoBehaviour
         {
             levelNextRoomPortal = nextRoomPortal;
         }
+    }
+
+    private static void CompleteCrystalWin(int sceneBuildIndex)
+    {
+        IsCrystalWinComplete = true;
+        completedWinSceneBuildIndex = sceneBuildIndex;
     }
 }
 
