@@ -18,6 +18,7 @@ public class Inversion : MonoBehaviour
     [SerializeField] private float orbSpawnDistance = 8f;
     [SerializeField] private float winningSceneDuration = 2.5f;
     [SerializeField] private float timeToWin = 5f;
+    private PlayerOverlapResolver overlapResolver;
     private GameObject currentOrb;
     public bool isInverted = false;
     private float invertedTimer = 0f;
@@ -25,6 +26,15 @@ public class Inversion : MonoBehaviour
     private bool winningSequenceTriggered = false;
     private bool winningSceneHidden = false;
     private PlayerController playerController;
+    private void Start()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player != null)
+        {
+            overlapResolver = player.GetComponent<PlayerOverlapResolver>();
+        }
+    }
 
     void Update()
     {
@@ -175,6 +185,10 @@ public class Inversion : MonoBehaviour
         ActualObjects.SetActive(false);
         InvertedBlocks.SetActive(true);
         ActualBlocks.SetActive(false);
+        if (overlapResolver != null)
+        {
+            StartCoroutine(overlapResolver.ResolvePosition());
+        }
     }
 
     private void SwitchToNormalWorld()
@@ -194,6 +208,10 @@ public class Inversion : MonoBehaviour
         {
             Destroy(currentOrb);
             currentOrb = null;
+        }
+        if (overlapResolver != null)
+        {
+            StartCoroutine(overlapResolver.ResolvePosition());
         }
     }
     public float GetInvertedTime()

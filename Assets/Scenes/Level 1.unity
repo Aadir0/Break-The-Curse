@@ -37497,6 +37497,7 @@ GameObject:
   - component: {fileID: 7935217473093980313}
   - component: {fileID: 7935217473093980314}
   - component: {fileID: 545914238286542869}
+  - component: {fileID: 7935217473093980315}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -38556,6 +38557,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7935217473093980315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5615340137856983121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ce626f075bf6147a713b8c80a84f81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerOverlapResolver
+  playerCollider: {fileID: 3268926565970222177}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  searchStep: 0.05
+  maxSearchDistance: 6
 --- !u!1 &8000329098166261334
 GameObject:
   m_ObjectHideFlags: 0
