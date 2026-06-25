@@ -6,6 +6,7 @@ public class BackGroundSound : MonoBehaviour
     [SerializeField] private AudioClip normalWorldMusic;
     [SerializeField] private AudioClip invertedWorldMusic;
     [SerializeField] private float fadeDuration = 1f;
+    [SerializeField] private float masterVolume = 1f;
     [SerializeField] private Inversion inversion;
     private bool isInvertedWorld;
     private static BackGroundSound instance;
@@ -35,6 +36,7 @@ public class BackGroundSound : MonoBehaviour
         }
 
         audioSource.loop = true;
+        audioSource.volume = masterVolume;
         inversion = FindAnyObjectByType<Inversion>();
     }
 
@@ -112,6 +114,7 @@ public class BackGroundSound : MonoBehaviour
         {
             audioSource.clip = normalWorldMusic;
             audioSource.Play();
+            audioSource.volume = masterVolume;
             isInvertedWorld = false;
         }
     }
@@ -122,7 +125,18 @@ public class BackGroundSound : MonoBehaviour
         {
             audioSource.clip = invertedWorldMusic;
             audioSource.Play();
+            audioSource.volume = masterVolume;
             isInvertedWorld = true;
+        }
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        masterVolume = Mathf.Clamp01(volume);
+
+        if (audioSource != null)
+        {
+            audioSource.volume = masterVolume;
         }
     }
 
@@ -138,6 +152,7 @@ public class BackGroundSound : MonoBehaviour
     {
         float elapsedTime = 0f;
         float startVolume = audioSource.volume;
+        float targetVolume = masterVolume;
 
         // Fade out
         while (elapsedTime < fadeDuration)
@@ -156,10 +171,10 @@ public class BackGroundSound : MonoBehaviour
         while (elapsedTime < fadeDuration)
         {
             elapsedTime += Time.deltaTime;
-            audioSource.volume = Mathf.Lerp(0f, startVolume, elapsedTime / fadeDuration);
+            audioSource.volume = Mathf.Lerp(0f, targetVolume, elapsedTime / fadeDuration);
             yield return null;
         }
 
-        audioSource.volume = startVolume;
+        audioSource.volume = targetVolume;
     }
 }

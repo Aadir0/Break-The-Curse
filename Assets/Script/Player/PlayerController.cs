@@ -2,11 +2,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private GameObject deathCanvas;
     [Header("Wall Movement")]
     [SerializeField] private float wallHoldDuration = 0.15f;
     [SerializeField] private float wallFallSpeed = 3f;
@@ -45,6 +47,7 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded => groundContacts.Count > 0;
     private bool IsTouchingWall => wallContacts.Count > 0;
+    public bool IsDead { get; private set; }
     
     void Awake()
     {
@@ -57,6 +60,14 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (IsDead)
+        {
+            currentMoveInput = 0f;
+            jumpRequested = false;
+            StopRunningSound();
+            return;
+        }
+
         if (Time.timeScale == 0f)
         {
             currentMoveInput = 0f;
@@ -142,6 +153,12 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (IsDead)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
         if (Time.timeScale == 0f)
         {
             return;
@@ -212,12 +229,14 @@ public class PlayerController : MonoBehaviour
         groundCoyoteTimer = 0f;
         jumpGroundLockTimer = 0.12f;
         restartedJumpAnimationOnWallContact = false;
+        StopRunningSound();
         PlayJumpSound();
     }
 
     void WallJump()
     {
-        float jumpDirection = Mathf.Sign(GetWallNormalX());
+        float wallNormalX = GetWallNormalX();
+        float jumpDirection = wallNormalX == 0f ? 0f : Mathf.Sign(wallNormalX);
         float throwbackForce = Mathf.Min(wallJumpThrowbackForce, jumpForce * 0.9f);
 
         rb.linearVelocity = new Vector2(
@@ -228,6 +247,7 @@ public class PlayerController : MonoBehaviour
         wallJumpRecoveryTimer = wallJumpControlLockDuration;
         wallJumpCoyoteTimer = 0f;
         restartedJumpAnimationOnWallContact = false;
+        StopRunningSound();
         PlayJumpSound();
     }
 
@@ -258,10 +278,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Trap"))
         {
-            PlayDeathSound();
-            anim.SetTrigger("die");
-            Instantiate(bloodEffectPrefab, transform.position, Quaternion.identity);
-            Invoke(nameof(ReloadScene), 1f);
+            Die();
             return;
         }
 
@@ -271,13 +288,131 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            PlayDeathSound();
-            anim.SetTrigger("die");
-            Instantiate(bloodEffectPrefab, transform.position, Quaternion.identity);
-            Invoke(nameof(ReloadScene), 1f);
+            Die();
             return;
         }
     }
+
+    void Die()
+    {
+        if (IsDead)
+        {
+            return;
+        }
+
+        IsDead = true;
+        PlayDeathSound();
+        anim.SetTrigger("die");
+        SpawnBloodEffect();
+        ShowDeathCanvas();
+        Invoke(nameof(ReloadScene), 3f);
+    }
+
+    void SpawnBloodEffect()
+    {
+        if (bloodEffectPrefab != null)
+        {
+            Instantiate(bloodEffectPrefab, transform.position, Quaternion.identity);
+        }
+    }
+
+    void ShowDeathCanvas()
+    {
+        if (deathCanvas == null)
+        {
+            deathCanvas = FindInactiveObjectInScene("Loss");
+        }
+
+        if (deathCanvas == null)
+        {
+            deathCanvas = CreateFallbackDeathCanvas();
+        }
+
+        if (deathCanvas != null)
+        {
+            deathCanvas.SetActive(true);
+        }
+        else
+        {
+            Debug.LogWarning("Death canvas is not assigned and no scene object named Loss was found.");
+        }
+    }
+
+    GameObject FindInactiveObjectInScene(string objectName)
+    {
+        GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+        Scene activeScene = SceneManager.GetActiveScene();
+
+        foreach (GameObject sceneObject in allObjects)
+        {
+            if (sceneObject.name == objectName && sceneObject.scene == activeScene)
+            {
+                return sceneObject;
+            }
+        }
+
+        return null;
+    }
+
+    GameObject CreateFallbackDeathCanvas()
+    {
+        GameObject canvasObject = new GameObject("Loss");
+        RectTransform canvasRect = canvasObject.AddComponent<RectTransform>();
+        Canvas canvas = canvasObject.AddComponent<Canvas>();
+        CanvasScaler canvasScaler = canvasObject.AddComponent<CanvasScaler>();
+        canvasObject.AddComponent<GraphicRaycaster>();
+
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvas.sortingOrder = 1000;
+        canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        canvasScaler.referenceResolution = new Vector2(1920f, 1080f);
+
+        canvasRect.anchorMin = Vector2.zero;
+        canvasRect.anchorMax = Vector2.one;
+        canvasRect.offsetMin = Vector2.zero;
+        canvasRect.offsetMax = Vector2.zero;
+
+        GameObject panelObject = new GameObject("Panel");
+        panelObject.transform.SetParent(canvasObject.transform, false);
+
+        RectTransform panelRect = panelObject.AddComponent<RectTransform>();
+        Image panelImage = panelObject.AddComponent<Image>();
+        panelRect.anchorMin = Vector2.zero;
+        panelRect.anchorMax = Vector2.one;
+        panelRect.offsetMin = Vector2.zero;
+        panelRect.offsetMax = Vector2.zero;
+        panelImage.color = new Color(0f, 0f, 0f, 0.85f);
+
+        Font font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+
+        if (font == null)
+        {
+            font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+        }
+
+        if (font != null)
+        {
+            GameObject textObject = new GameObject("Text");
+            textObject.transform.SetParent(canvasObject.transform, false);
+
+            RectTransform textRect = textObject.AddComponent<RectTransform>();
+            Text text = textObject.AddComponent<Text>();
+            textRect.anchorMin = Vector2.zero;
+            textRect.anchorMax = Vector2.one;
+            textRect.offsetMin = Vector2.zero;
+            textRect.offsetMax = Vector2.zero;
+
+            text.text = "YOU DIED";
+            text.font = font;
+            text.fontSize = 80;
+            text.alignment = TextAnchor.MiddleCenter;
+            text.color = Color.white;
+        }
+
+        canvasObject.SetActive(false);
+        return canvasObject;
+    }
+
     void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -320,9 +455,8 @@ public class PlayerController : MonoBehaviour
                 hasGroundContact = true;
             }
 
-            // Only allow wall contact on slanted surfaces, not pure vertical boundaries
-            // Check that the surface has both horizontal and vertical components
-            if (Mathf.Abs(contact.normal.x) > 0.5f && Mathf.Abs(contact.normal.y) > 0.1f)
+            // Allow wall contact on actual vertical walls as well as slightly slanted ones.
+            if (Mathf.Abs(contact.normal.x) > 0.5f)
             {
                 wallNormalX = contact.normal.x;
             }
@@ -428,9 +562,20 @@ public class PlayerController : MonoBehaviour
     {
         if (deathClip != null && audioSource != null)
         {
-            isPlayingRunSound = false;
-            audioSource.loop = false;
+            StopRunningSound();
             audioSource.PlayOneShot(deathClip);
         }
+    }
+
+    void StopRunningSound()
+    {
+        if (!isPlayingRunSound || audioSource == null)
+        {
+            return;
+        }
+
+        audioSource.loop = false;
+        audioSource.Stop();
+        isPlayingRunSound = false;
     }
 }
