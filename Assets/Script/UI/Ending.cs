@@ -5,6 +5,7 @@ public class Ending : MonoBehaviour
 {
     [SerializeField] private GameObject credits;
     [SerializeField] private GameObject[] mainMenuButton;
+    [SerializeField] private GameObject pauseMenuUI;
 
     private void Update()
     {
@@ -15,6 +16,12 @@ public class Ending : MonoBehaviour
                 mainMenuButton[i].SetActive(false);
             }
             credits.SetActive(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Time.timeScale = Time.timeScale == 0f ? 1f : 0f;
+            pauseMenuUI.SetActive(!pauseMenuUI.activeSelf);
         }
     }
 
