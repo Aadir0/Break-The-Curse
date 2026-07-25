@@ -50143,7 +50143,7 @@ GameObject:
   - component: {fileID: 8135285966051729349}
   - component: {fileID: 7527755839225270277}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: NarationUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55256,19 +55256,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 044268a35a4092a4eaaca628cd67d162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inversion
+  checkCollider: {fileID: 0}
   InvertedObjects: {fileID: 11074625}
   GlobalVolume: {fileID: 9192870836157504185}
-  ActualObjects: {fileID: 1645451034}
   can: {fileID: 7427001539293619787}
-  Actualvolume: {fileID: 442479297}
-  InvertedBlocks: {fileID: 1490859521}
-  ActualBlocks: {fileID: 2027129035}
-  winningScene: {fileID: 6190528191611349282}
   portal: {fileID: 5304627897057239346}
-  orbPrefab: {fileID: 429653503273886386, guid: 98a331b0a64303d489cd8e9557e301d9, type: 3}
-  orbSpawnDistance: 8
-  winningSceneDuration: 2.5
-  timeToWin: 5
+  TeenPlayer: {fileID: 0}
+  TeenPlayerTransform: {fileID: 0}
+  OldPlayer: {fileID: 0}
+  OldPlayerTransform: {fileID: 0}
+  vCam: {fileID: 0}
+  heroController: {fileID: 0}
+  newPlayerController: {fileID: 0}
+  playerAttack: {fileID: 0}
   isInverted: 0
 --- !u!1 &1958194759743129253
 GameObject:
@@ -55283,7 +55283,7 @@ GameObject:
   - component: {fileID: 371533355582257865}
   - component: {fileID: 3483612142176516102}
   m_Layer: 5
-  m_Name: Canvas (3)
+  m_Name: PauseMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56205,7 +56205,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1958194759743129253}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
@@ -56218,7 +56218,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 14.07272, y: -1.08452}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &4416810983386366903
@@ -56498,7 +56498,7 @@ GameObject:
   - component: {fileID: 5777472240870283135}
   - component: {fileID: 2051174119068833070}
   m_Layer: 5
-  m_Name: Loss
+  m_Name: Death
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57253,7 +57253,7 @@ GameObject:
   - component: {fileID: 8822938155179563846}
   - component: {fileID: 8544031882021300803}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: ScaleLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57326,7 +57326,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7427001539293619787}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
@@ -57336,7 +57336,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 14.07272, y: -1.08452}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &7737264976962492606
@@ -57621,7 +57621,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994382340847301808}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
@@ -57633,7 +57633,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 14.07272, y: -1.08452}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &8733485913370104641
@@ -57877,10 +57877,10 @@ SceneRoots:
   - {fileID: 1192257360}
   - {fileID: 614533172}
   - {fileID: 797902508}
+  - {fileID: 442479299}
   - {fileID: 2143224960}
   - {fileID: 1296076139}
   - {fileID: 2273818989808643131}
-  - {fileID: 442479299}
   - {fileID: 8965740427186911705}
   - {fileID: 1612135591}
   - {fileID: 887325682}
