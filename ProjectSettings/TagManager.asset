@@ -7,7 +7,6 @@ TagManager:
   - Ground
   - Trap
   - Enemy
-  - Wall
   - Crystal
   - Play
   layers:
@@ -20,7 +19,7 @@ TagManager:
   - Ground
   - Trap
   - Enemy
-  - Wall
+  - 
   - 
   - 
   - 

@@ -26,7 +26,7 @@ public class Parallax : MonoBehaviour
         }
     }
 
-    void LateUpdate()
+    void Update()
     {
         if (player == null)
         {
