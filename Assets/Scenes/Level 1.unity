@@ -21435,7 +21435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d895bbb62d87f444b824e8761f635396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
-  attackCooldown: 0.25
+  attackCooldown: 1
   attackMoveLockDuration: 0.35
   avoidRepeatAttack: 1
   damage: 7
@@ -22862,6 +22862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewDisplay
   CanvasConttroller: {fileID: 5967560900535128216}
+  manager: {fileID: 8506555206204283559}
 --- !u!1 &7909397281192552513
 GameObject:
   m_ObjectHideFlags: 0
@@ -23850,7 +23851,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &8509284483248443413
 MonoBehaviour:
   m_ObjectHideFlags: 0
