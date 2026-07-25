@@ -9645,9 +9645,9 @@ MonoBehaviour:
   parryPopupColor: {r: 0.735849, g: 0.07636161, b: 0.10638954, a: 1}
   hitPostureColor: {r: 1, g: 1, b: 1, a: 1}
   audioSource: {fileID: 621074207}
-  hurtClip: {fileID: 0}
-  blockClip: {fileID: 0}
-  deathClip: {fileID: 0}
+  hurtClip: {fileID: 8300000, guid: 9a59bbe01cd14a64d9cc82151c0c15e5, type: 3}
+  blockClip: {fileID: 8300000, guid: 32a457f75b576794cb676c45f739be28, type: 3}
+  deathClip: {fileID: 8300000, guid: 1206996d62d95524aa66b8083c70e026, type: 3}
   staggerClip: {fileID: 0}
   destroyDelayAfterDeath: 1.5
   healthPotionPrefab: {fileID: 0}
@@ -9754,7 +9754,8 @@ MonoBehaviour:
     m_Bits: 8
   hitCheckDelay: 0.2
   audioSource: {fileID: 621074207}
-  attackClips: []
+  attackClips:
+  - {fileID: 8300000, guid: 6381f0e62033390409aa2d8835fe9482, type: 3}
   liftGrabClip: {fileID: 0}
   liftDropClip: {fileID: 0}
   anim: {fileID: 621074208}
@@ -25059,9 +25060,9 @@ MonoBehaviour:
   parryPopupColor: {r: 0.8113208, g: 0.17533861, b: 0.15154853, a: 1}
   hitPostureColor: {r: 1, g: 1, b: 1, a: 1}
   audioSource: {fileID: 1898725852}
-  hurtClip: {fileID: 0}
-  blockClip: {fileID: 0}
-  deathClip: {fileID: 0}
+  hurtClip: {fileID: 8300000, guid: 9a59bbe01cd14a64d9cc82151c0c15e5, type: 3}
+  blockClip: {fileID: 8300000, guid: 32a457f75b576794cb676c45f739be28, type: 3}
+  deathClip: {fileID: 8300000, guid: 1206996d62d95524aa66b8083c70e026, type: 3}
   staggerClip: {fileID: 0}
   destroyDelayAfterDeath: 1.5
   healthPotionPrefab: {fileID: 3323669882378564594, guid: 0b9462db2afc5124394b8879017f4ec9, type: 3}
@@ -25158,7 +25159,9 @@ MonoBehaviour:
     m_Bits: 8
   hitCheckDelay: 0.1
   audioSource: {fileID: 1898725852}
-  attackClips: []
+  attackClips:
+  - {fileID: 8300000, guid: cc66c61ab8ff24b4dbf92b76184ba6e1, type: 3}
+  - {fileID: 8300000, guid: 64327f61983b409439b9c6f4cf38955d, type: 3}
   anim: {fileID: 1898725853}
   enemyHealth: {fileID: 1898725849}
   rb: {fileID: 0}
@@ -28165,9 +28168,9 @@ MonoBehaviour:
   parryPopupColor: {r: 1, g: 0.3024037, b: 0.19999999, a: 1}
   hitPostureColor: {r: 1, g: 1, b: 1, a: 1}
   audioSource: {fileID: 7933336830710461124}
-  hurtClip: {fileID: 0}
-  blockClip: {fileID: 0}
-  deathClip: {fileID: 0}
+  hurtClip: {fileID: 8300000, guid: 9a59bbe01cd14a64d9cc82151c0c15e5, type: 3}
+  blockClip: {fileID: 8300000, guid: 32a457f75b576794cb676c45f739be28, type: 3}
+  deathClip: {fileID: 8300000, guid: 1206996d62d95524aa66b8083c70e026, type: 3}
   staggerClip: {fileID: 0}
   destroyDelayAfterDeath: 1.5
   healthPotionPrefab: {fileID: 3323669882378564594, guid: 0b9462db2afc5124394b8879017f4ec9, type: 3}
@@ -28404,7 +28407,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fa364e8dab85aed41861ca24350e5f5f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9b9eea2017b631542b6d2222fab8bfab, type: 2}
   m_sharedMaterial: {fileID: 5393528732244371035, guid: fa364e8dab85aed41861ca24350e5f5f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -28471,7 +28474,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &482069370580538218
@@ -28641,7 +28644,8 @@ MonoBehaviour:
     m_Bits: 8
   hitCheckDelay: 0.2
   audioSource: {fileID: 5546880482552788530}
-  attackClips: []
+  attackClips:
+  - {fileID: 8300000, guid: 6381f0e62033390409aa2d8835fe9482, type: 3}
   liftGrabClip: {fileID: 0}
   liftDropClip: {fileID: 0}
   anim: {fileID: 2172900848471065706}
@@ -28723,9 +28727,9 @@ MonoBehaviour:
   parryPopupColor: {r: 0.735849, g: 0.07636161, b: 0.10638954, a: 1}
   hitPostureColor: {r: 1, g: 1, b: 1, a: 1}
   audioSource: {fileID: 5546880482552788530}
-  hurtClip: {fileID: 0}
-  blockClip: {fileID: 0}
-  deathClip: {fileID: 0}
+  hurtClip: {fileID: 8300000, guid: 9a59bbe01cd14a64d9cc82151c0c15e5, type: 3}
+  blockClip: {fileID: 8300000, guid: 32a457f75b576794cb676c45f739be28, type: 3}
+  deathClip: {fileID: 8300000, guid: 1206996d62d95524aa66b8083c70e026, type: 3}
   staggerClip: {fileID: 0}
   destroyDelayAfterDeath: 1.5
   healthPotionPrefab: {fileID: 0}
@@ -29155,7 +29159,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fa364e8dab85aed41861ca24350e5f5f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9b9eea2017b631542b6d2222fab8bfab, type: 2}
   m_sharedMaterial: {fileID: 5393528732244371035, guid: fa364e8dab85aed41861ca24350e5f5f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -29222,7 +29226,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!224 &765942036338078626
@@ -29353,7 +29357,8 @@ MonoBehaviour:
     m_Bits: 8
   hitCheckDelay: 0.15
   audioSource: {fileID: 7933336830710461124}
-  attackClips: []
+  attackClips:
+  - {fileID: 8300000, guid: 6381f0e62033390409aa2d8835fe9482, type: 3}
   anim: {fileID: 1465015356922933780}
   enemyHealth: {fileID: 374813124829496370}
   rb: {fileID: 0}
@@ -31852,7 +31857,9 @@ MonoBehaviour:
     m_Bits: 8
   hitCheckDelay: 0.1
   audioSource: {fileID: 1935563575623587189}
-  attackClips: []
+  attackClips:
+  - {fileID: 8300000, guid: cc66c61ab8ff24b4dbf92b76184ba6e1, type: 3}
+  - {fileID: 8300000, guid: 64327f61983b409439b9c6f4cf38955d, type: 3}
   anim: {fileID: 7576637741239834377}
   enemyHealth: {fileID: 8291934236106606186}
   rb: {fileID: 0}
@@ -32023,9 +32030,9 @@ MonoBehaviour:
   parryPopupColor: {r: 0.83396226, g: 0.11759691, b: 0.029896643, a: 1}
   hitPostureColor: {r: 1, g: 1, b: 1, a: 1}
   audioSource: {fileID: 8062519767189591162}
-  hurtClip: {fileID: 0}
-  blockClip: {fileID: 0}
-  deathClip: {fileID: 0}
+  hurtClip: {fileID: 8300000, guid: 9a59bbe01cd14a64d9cc82151c0c15e5, type: 3}
+  blockClip: {fileID: 8300000, guid: 32a457f75b576794cb676c45f739be28, type: 3}
+  deathClip: {fileID: 8300000, guid: 1206996d62d95524aa66b8083c70e026, type: 3}
   staggerClip: {fileID: 0}
   destroyDelayAfterDeath: 1.5
   healthPotionPrefab: {fileID: 3323669882378564594, guid: 0b9462db2afc5124394b8879017f4ec9, type: 3}
@@ -33418,7 +33425,8 @@ MonoBehaviour:
     m_Bits: 8
   hitCheckDelay: 0.2
   audioSource: {fileID: 8062519767189591162}
-  attackClips: []
+  attackClips:
+  - {fileID: 8300000, guid: 6381f0e62033390409aa2d8835fe9482, type: 3}
   anim: {fileID: 8744975351562934965}
   enemyHealth: {fileID: 3225836488711113010}
   rb: {fileID: 4506085924175888647}
@@ -35138,7 +35146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6d28023d9a569a41b28af908bb3260c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenu
-  TutorialPanel: {fileID: 0}
   backgroundMusicSlider: {fileID: 0}
   backGroundSound: {fileID: 0}
   OptionsPanel: {fileID: 0}
@@ -38090,9 +38097,9 @@ MonoBehaviour:
   parryPopupColor: {r: 0.8113208, g: 0.17533861, b: 0.15154853, a: 1}
   hitPostureColor: {r: 1, g: 1, b: 1, a: 1}
   audioSource: {fileID: 1935563575623587189}
-  hurtClip: {fileID: 0}
-  blockClip: {fileID: 0}
-  deathClip: {fileID: 0}
+  hurtClip: {fileID: 8300000, guid: 9a59bbe01cd14a64d9cc82151c0c15e5, type: 3}
+  blockClip: {fileID: 8300000, guid: 32a457f75b576794cb676c45f739be28, type: 3}
+  deathClip: {fileID: 8300000, guid: 1206996d62d95524aa66b8083c70e026, type: 3}
   staggerClip: {fileID: 0}
   destroyDelayAfterDeath: 1.5
   healthPotionPrefab: {fileID: 3323669882378564594, guid: 0b9462db2afc5124394b8879017f4ec9, type: 3}

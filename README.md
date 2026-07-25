@@ -1,10 +1,27 @@
-# Break The Curse
+# Nightmare - A fairy tale
 
-**Break The Curse** is a 2D Unity platformer about surviving a cursed kingdom split between the normal world and a demon world. The player must move through dangerous levels, avoid traps and enemies, collect crystals, use portals, and uncover the path toward breaking the curse before the darkness consumes everything.
+**Nightmare - A fairy tale** is a 2D Unity platformer about a child trapped inside a growing nightmare. Fight through dream monsters, survive the darkness, and discover the strange ally who has entered the dream to end it.
 
 ## Story
 
-In a forgotten kingdom swallowed by an ancient curse, a lone wanderer awakens between two worlds: the fading human realm and the twisted demon world feeding on it. To break the curse, the wanderer must survive haunted caverns, corrupted creatures, deadly traps, and unstable portals while collecting lost crystals that hold the last fragments of the kingdom's light. Each crystal reveals more of the truth: the curse is not merely destroying the land, it is testing whether any soul still has the courage to fight back. As the demon world presses closer and reality begins to fracture, the wanderer must master the power of inversion, face the darkness that consumed the kingdom, and reach the final portal before the last light is gone forever.
+A child has been having nightmares for the past week, and each night they grow stronger. Tonight, when he falls asleep, the nightmare begins again, but this time a new character appears inside the dream. It is none other than his own future self, determined to get rid of the nightmare once and for all.
+
+The future self steps forward to fight the monsters haunting the dream. To escape the nightmare, he must battle the creatures, defeat them, and break the fear that has been growing night after night.
+
+## Inversion Theme
+
+The inversion theme represents the moment the nightmare takes control and the child's future self enters the dream. In the game, this is implemented through an `Inversion` trigger that changes the active world state when the player reaches the inversion point.
+
+When inversion begins:
+
+- The normal child player is disabled and the future-self player is enabled at the same position.
+- The camera switches its tracking target from the child to the future self.
+- Nightmare-only objects, enemies, and visual effects are activated.
+- The portal is hidden so the player must face the nightmare before escaping.
+- The conversation canvas appears to support the story moment.
+- The background music changes from the normal theme to the inverted nightmare theme.
+
+The player fights through the inverted nightmare state until all tracked monsters are defeated. Once the enemies are cleared, the ending scene is shown, the game switches back to the normal world state, and the portal becomes available again.
 
 ## Controls
 
@@ -12,31 +29,24 @@ In a forgotten kingdom swallowed by an ancient curse, a lone wanderer awakens be
 | --- | --- |
 | Move left | `A` |
 | Move right | `D` |
-| Alternative movement | Mouse scroll wheel |
-| Reset scroll movement | Middle mouse button |
 | Jump | `Space` |
-| Wall jump | `Space` while touching a wall |
-| Switch between normal and inverted world | `E` |
-| Restart current level | `R` |
+| Attack | Left mouse button |
+| Parry | Right mouse button |
+| Use health potion | `H` |
+| Advance tutorial or conversation ending | `Space` |
 | Pause or resume | `Escape` |
-| Show available hint | `H` |
-| Advance tutorial or ending text | `Space` |
 
 ## Core Mechanics
 
-- **Platforming:** Move, jump, and wall jump through cave-like levels filled with traps, platforms, and enemy encounters.
-- **World Inversion:** Press `E` to switch between the normal world and the inverted demon world. The level layout, visuals, audio, and hazards can change during inversion.
-- **Orb Chase:** In the inverted world, an orb can spawn and chase the player. The longer the player stays inverted, the more dangerous the chase becomes.
-- **Crystal Collection:** Crystals tagged as `Crystal` are collected on contact. The crystal count carries across Level 1 and Level 2.
-- **Level Unlocking:** Once the required crystals are collected, the win canvas appears briefly and the portal to the next room becomes active.
-- **Portals:** Entering a portal moves the player to the next scene or level.
-- **Death and Reload:** Touching traps or enemies triggers the death sequence, displays the loss screen, and reloads the current level.
-- **Hints:** A timer counts down before hints become available. When the timer reaches zero, pressing `H` displays the current hint for a short time, then the next hint timer begins.
-- **Tutorial Text:** Tutorial messages advance with `Space` and guide the player into the first playable level.
+- **Platforming:** Move and jump through nightmare spaces filled with enemies and danger.
+- **Combat:** Attack monsters with the left mouse button and parry incoming threats with the right mouse button.
+- **Health Potions:** Press `H` to use a health potion when survival gets difficult.
+- **Tutorial and Conversations:** Tutorial prompts and conversation endings advance with `Space`.
+- **Pause:** Press `Escape` to pause or resume the game.
 
 ## Objective
 
-Collect the crystals, survive the curse, unlock portals, and push forward through each level until the demon world can no longer hold the kingdom in darkness.
+Fight through the nightmare, defeat the monsters, and help the child's future self end the nightmare before it consumes him completely.
 
 ## Project Info
 

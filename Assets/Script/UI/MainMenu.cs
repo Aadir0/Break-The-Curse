@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private GameObject TutorialPanel;
     [SerializeField] private Slider backgroundMusicSlider;
     [SerializeField] private BackGroundSound backGroundSound;
     [SerializeField] private GameObject OptionsPanel;
@@ -59,44 +58,7 @@ public class MainMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void StartGame()
     {
-        if (TutorialPanel != null)
-        {
-            TutorialPanel.SetActive(true);
-        }
-    }
-
-    public void Story()
-    {
-        if (StoryPanel != null)
-        {
-            Time.timeScale = 0f; // Pause the game
-            for (int i = 0; i < buttonsToDisableOnPause.Length; i++)
-            {
-                if (buttonsToDisableOnPause[i] != null)
-                {
-                    buttonsToDisableOnPause[i].SetActive(false);
-                }
-            }
-            SetPlayHoverColor(playHoverColor);
-            StoryPanel.SetActive(true);
-        }
-    }
-
-    public void CloseStory()
-    {
-        if (StoryPanel != null)
-        {
-            Time.timeScale = 1f; // Resume the game
-            for (int i = 0; i < buttonsToDisableOnPause.Length; i++)
-            {
-                if (buttonsToDisableOnPause[i] != null)
-                {
-                    buttonsToDisableOnPause[i].SetActive(true);
-                }
-            }
-            SetPlayHoverColor(originalPlayHoverColor);
-            StoryPanel.SetActive(false);
-        }
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame()
