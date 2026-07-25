@@ -17011,21 +17011,6 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 1
---- !u!114 &3162422212705574004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3967094646768149920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd3f97f9d1a425f469de1e0e7fbb12f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PotionCountUI
-  potionInventory: {fileID: 8833975742098160083}
-  potionCountText: {fileID: 3595560618147294645}
-  label: Potion
 --- !u!114 &3180285286430646568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18214,7 +18199,7 @@ GameObject:
   - component: {fileID: 9090370968285560031}
   - component: {fileID: 1940946810869718764}
   - component: {fileID: 7578285392140748274}
-  - component: {fileID: 3162422212705574004}
+  - component: {fileID: 9090370968285560032}
   m_Layer: 5
   m_Name: PotionUI
   m_TagString: Untagged
@@ -24413,12 +24398,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1336834422459404855}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0a384d919f25b249b014f1629127763, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a9d24fd3f6d4f348946f1a7d6aa1b3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPotionInventory
   startingPotions: 0
   maxPotions: 9
-  healAmount: 30
+  healAmount: 35
   consumeKey: 104
   onPotionCountChanged:
     m_PersistentCalls:
@@ -24809,6 +24794,21 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &9090370968285560032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3967094646768149920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b182f7cc22dc489ebd2c37f8017e91c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PotionCountUI
+  potionInventory: {fileID: 8833975742098160083}
+  potionCountText: {fileID: 3595560618147294645}
+  label: Potion
 --- !u!224 &9178762792313971927
 RectTransform:
   m_ObjectHideFlags: 0

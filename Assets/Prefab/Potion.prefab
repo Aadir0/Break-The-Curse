@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3254250030023054429}
   - component: {fileID: 7340148493850920084}
   - component: {fileID: -2168297335335156419}
-  - component: {fileID: -4514185281620687309}
+  - component: {fileID: 1212461641144890117}
   m_Layer: 0
   m_Name: Potion
   m_TagString: Untagged
@@ -167,7 +167,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-4514185281620687309
+--- !u!114 &1212461641144890117
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3323669882378564594}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1c7ab135f86aa64296e7f2b9ee0aae7, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f84f1a0a27d44c2a90a59ecb431de81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthPotionPickup
   potionAmount: 1

@@ -48795,7 +48795,7 @@ MonoBehaviour:
   attackCooldown: 0.25
   attackMoveLockDuration: 0.35
   avoidRepeatAttack: 1
-  damage: 7
+  damage: 10
   attackPostureDamage: 8
   attackPoint: {fileID: 2314730133120825804}
   attackRange: 0.55

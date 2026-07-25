@@ -34288,7 +34288,7 @@ GameObject:
   - component: {fileID: 4979038617458508}
   - component: {fileID: 7266958788348081535}
   - component: {fileID: 1665687801584561761}
-  - component: {fileID: 6185098617136363495}
+  - component: {fileID: 7266958788348081536}
   m_Layer: 5
   m_Name: PotionUI
   m_TagString: Untagged
@@ -35500,21 +35500,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2197842344716056000}
   m_CullTransparentMesh: 1
---- !u!114 &6185098617136363495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5276881496618749491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd3f97f9d1a425f469de1e0e7fbb12f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PotionCountUI
-  potionInventory: {fileID: 9033785733988734820}
-  potionCountText: {fileID: 5751997251425617446}
-  label: Potion
 --- !u!224 &6198442985490447928
 RectTransform:
   m_ObjectHideFlags: 0
@@ -36756,6 +36741,21 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
+--- !u!114 &7266958788348081536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5276881496618749491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b182f7cc22dc489ebd2c37f8017e91c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PotionCountUI
+  potionInventory: {fileID: 9033785733988734820}
+  potionCountText: {fileID: 5751997251425617446}
+  label: Potion
 --- !u!224 &7283687504890610151
 RectTransform:
   m_ObjectHideFlags: 0
@@ -39326,7 +39326,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6455049104351280875}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0a384d919f25b249b014f1629127763, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a9d24fd3f6d4f348946f1a7d6aa1b3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPotionInventory
   startingPotions: 0
