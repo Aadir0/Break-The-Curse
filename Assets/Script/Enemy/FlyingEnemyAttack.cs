@@ -7,7 +7,7 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerLiftPoint
 {
-    public NewPlayerController player;
+    public HeroKnightPlayerController player;
     public Transform liftPoint;
 }
 
@@ -152,15 +152,18 @@ public class FlyingEnemyAttack : MonoBehaviour
         }
 
         bool inRange = Vector2.Distance(transform.position, player.position) <= grabRange;
+        bool playerAtGrabPoint = IsPlayerAtGrabPoint();
         bool canAct = !IsBlocking && !IsLifting && !IsDashing
             && (enemyHealth == null || !enemyHealth.IsStaggered);
 
-        if (inRange && grabCooldownTimer <= 0f && canAct)
+        if (playerAtGrabPoint && grabCooldownTimer <= 0f && canAct)
         {
             AttemptGrab();
         }
 
-        return inRange;
+        // Only tell the AI to stop when the precise grab point is lined up.
+        // Otherwise it can hover at the edge of grabRange and miss forever.
+        return IsLifting || (inRange && playerAtGrabPoint);
     }
 
     /// <summary>
@@ -230,19 +233,51 @@ public class FlyingEnemyAttack : MonoBehaviour
 
         Collider2D hit = Physics2D.OverlapCircle(grabPoint.position, grabCheckRadius, playerLayer);
 
-        if (hit != null && hit.TryGetComponent(out HeroKnightPlayerController playerController))
+        if (hit == null)
         {
-            hit.TryGetComponent(out PlayerHealth playerHealth);
+            return;
+        }
+
+        HeroKnightPlayerController playerController = hit.GetComponentInParent<HeroKnightPlayerController>();
+        if (playerController == null)
+        {
+            playerController = hit.GetComponent<HeroKnightPlayerController>();
+        }
+
+        if (playerController != null && !playerController.IsDead && !playerController.IsExternallyControlled)
+        {
+            PlayerHealth playerHealth = hit.GetComponentInParent<PlayerHealth>();
+            if (playerHealth == null)
+            {
+                playerHealth = hit.GetComponent<PlayerHealth>();
+            }
+
             StartLift(playerController, playerHealth);
         }
     }
 
+    private bool IsPlayerAtGrabPoint()
+    {
+        if (grabPoint == null)
+        {
+            return false;
+        }
+
+        return Physics2D.OverlapCircle(grabPoint.position, grabCheckRadius, playerLayer) != null;
+    }
+
     private void StartLift(HeroKnightPlayerController playerController, PlayerHealth playerHealth)
     {
+        if (playerController == null || IsLifting)
+        {
+            return;
+        }
+
         liftedPlayerController = playerController;
         currentLiftPoint = GetLiftPointFor(playerController);
         liftTimer = liftDuration;
         liftRiseTarget = transform.position + Vector3.up * liftRiseHeight;
+        rb.linearVelocity = Vector2.zero;
 
         playerController.SetExternallyControlled(true);
 
@@ -278,9 +313,11 @@ public class FlyingEnemyAttack : MonoBehaviour
         // Rise a bit while carrying, for drama, then hold at the peak.
         transform.position = Vector3.MoveTowards(transform.position, liftRiseTarget, liftRiseSpeed * Time.deltaTime);
 
-        if (currentLiftPoint != null && liftedPlayerController != null)
+        Transform carryPoint = currentLiftPoint != null ? currentLiftPoint : grabPoint;
+
+        if (carryPoint != null && liftedPlayerController != null)
         {
-            liftedPlayerController.transform.position = currentLiftPoint.position;
+            liftedPlayerController.transform.position = carryPoint.position;
         }
 
         if (liftTimer <= 0f)

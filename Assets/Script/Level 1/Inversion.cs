@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 using Unity.Cinemachine;
 using System.Collections.Generic;
 
-[System.Obsolete("This script is deprecated. Please use the new InversionManager script instead.")]
 public class Inversion : MonoBehaviour
 {
     [SerializeField] private BoxCollider2D checkCollider;
@@ -125,7 +124,7 @@ public class Inversion : MonoBehaviour
         StopTrackingEnemies();
         enemiesRemaining = 0;
 
-        EnemyHealth[] enemies = FindObjectsOfType<EnemyHealth>(true);
+        EnemyHealth[] enemies = FindObjectsByType<EnemyHealth>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
         foreach (EnemyHealth enemy in enemies)
         {

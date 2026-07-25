@@ -111,7 +111,8 @@ public class LightningController : MonoBehaviour
         if (Mathf.Abs(moveInput) > 0.01f)
         {
             // Rain blows opposite to player movement
-            targetWindX = Mathf.Sin(Time.time * 0.25f) * 2f - moveInput * 1.5f;
+            float windScale = windStrength / 3f;
+            targetWindX = (Mathf.Sin(Time.time * 0.25f) * 2f - moveInput * 1.5f) * windScale;
         }
 
         currentWindX = Mathf.Lerp(
