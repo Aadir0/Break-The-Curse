@@ -69,7 +69,7 @@ public class FlyingEnemyAI : MonoBehaviour
             return;
         }
 
-        bool locked = enemyAttack != null && enemyAttack.IsBlocking;
+        bool locked = enemyAttack != null && (enemyAttack.IsAttacking || enemyAttack.IsBlocking);
         locked = locked || (enemyHealth != null && enemyHealth.IsStaggered);
         if (locked)
         {

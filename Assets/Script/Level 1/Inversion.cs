@@ -18,6 +18,8 @@ public class Inversion : MonoBehaviour
     [SerializeField] private HeroKnightPlayerController heroController;
     [SerializeField] private NewPlayerController newPlayerController;
     [SerializeField] private PlayerAttack playerAttack;
+    [SerializeField] private AmbientWriting ConversationCanvas;
+    [SerializeField] private GameObject EndingScene;
     private PlayerOverlapResolver overlapResolver;
     private readonly List<EnemyHealth> trackedEnemies = new List<EnemyHealth>();
     public bool isInverted = false;
@@ -44,10 +46,14 @@ public class Inversion : MonoBehaviour
 
     void Update()
     {
-        
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        if (isInverted)
+        {
+            RefreshEnemyProgress();
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -70,6 +76,7 @@ public class Inversion : MonoBehaviour
         {
             SwitchToInvertedWorld();
             invertedTimer = 0f;
+            ConversationCanvas.Display();
         }
         else
         {
@@ -122,9 +129,11 @@ public class Inversion : MonoBehaviour
     private void InitializeEnemyTracking()
     {
         StopTrackingEnemies();
-        enemiesRemaining = 0;
+        trackedEnemies.Clear();
 
-        EnemyHealth[] enemies = FindObjectsByType<EnemyHealth>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        EnemyHealth[] enemies = InvertedObjects != null
+            ? InvertedObjects.GetComponentsInChildren<EnemyHealth>(true)
+            : FindObjectsByType<EnemyHealth>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
         foreach (EnemyHealth enemy in enemies)
         {
@@ -134,9 +143,10 @@ public class Inversion : MonoBehaviour
             }
 
             trackedEnemies.Add(enemy);
-            enemiesRemaining++;
             enemy.onDied.AddListener(HandleEnemyDied);
         }
+
+        RefreshEnemyProgress();
     }
 
     private void StopTrackingEnemies()
@@ -154,14 +164,17 @@ public class Inversion : MonoBehaviour
 
     private void HandleEnemyDied()
     {
-        if (enemiesRemaining > 0)
-        {
-            enemiesRemaining--;
-        }
+        RefreshEnemyProgress();
+    }
 
-        if (enemiesRemaining <= 0)
+    private void RefreshEnemyProgress()
+    {
+        trackedEnemies.RemoveAll(enemy => enemy == null || enemy.IsDead);
+        enemiesRemaining = trackedEnemies.Count;
+
+        if (enemiesRemaining == 0)
         {
-            enemiesRemaining = 0;
+           EndingScene.SetActive(true);
             UpdatePortalState();
 
             if (isInverted)

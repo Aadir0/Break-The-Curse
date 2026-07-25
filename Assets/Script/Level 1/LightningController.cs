@@ -42,7 +42,6 @@ public class LightningController : MonoBehaviour
         globalLight.intensity = normalIntensity;
         StartCoroutine(LightningRoutine());
         rainVelocity = rainParticles.velocityOverLifetime;
-        rainVelocity.enabled = true;
         rainAudioSource.clip = rainLoop;
         rainAudioSource.loop = true;
         targetRainVolume = minRainVolume;

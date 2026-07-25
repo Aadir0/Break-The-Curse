@@ -52,6 +52,13 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private AudioClip blockClip;
     [SerializeField] private AudioClip deathClip;
     [SerializeField] private AudioClip staggerClip;
+    [SerializeField] private float destroyDelayAfterDeath = 1.5f;
+
+    [Header("Drops")]
+    [SerializeField] private GameObject healthPotionPrefab;
+    [Range(0f, 1f)]
+    [SerializeField] private float healthPotionDropChance = 1f;
+    [SerializeField] private Vector3 healthPotionDropOffset = new Vector3(0f, 0.5f, 0f);
 
     [Header("Events")]
     public HealthChangedEvent onHealthChanged;
@@ -279,12 +286,7 @@ public class EnemyHealth : MonoBehaviour
         anim.SetTrigger(DieTrigger);
         onDied?.Invoke();
         PlaySound(deathClip);
-
-        Collider2D col = GetComponent<Collider2D>();
-        if (col != null)
-        {
-            col.enabled = true;
-        }
+        DropHealthPotion();
 
         if (TryGetComponent(out EnemyAI ai))
         {
@@ -307,6 +309,34 @@ public class EnemyHealth : MonoBehaviour
             // normal control if one is currently being carried.
             flyingAttack.enabled = false;
         }
+
+        Destroy(gameObject, destroyDelayAfterDeath);
+    }
+
+    private void DropHealthPotion()
+    {
+        if (Random.value > healthPotionDropChance)
+        {
+            return;
+        }
+
+        Vector3 dropPosition = transform.position + healthPotionDropOffset;
+
+        if (healthPotionPrefab != null)
+        {
+            Instantiate(healthPotionPrefab, dropPosition, Quaternion.identity);
+            return;
+        }
+
+        GameObject potion = new GameObject("Health Potion");
+        potion.transform.position = dropPosition;
+        CircleCollider2D pickupCollider = potion.AddComponent<CircleCollider2D>();
+        pickupCollider.isTrigger = true;
+        pickupCollider.radius = 0.35f;
+        Rigidbody2D pickupBody = potion.AddComponent<Rigidbody2D>();
+        pickupBody.bodyType = RigidbodyType2D.Kinematic;
+        pickupBody.gravityScale = 0f;
+        potion.AddComponent<HealthPotionPickup>();
     }
 
     private void PlaySound(AudioClip clip)
