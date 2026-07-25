@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7473401c023bc8d4c8694bee505cde0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxNew
-  player: {fileID: 0}
+  player: {fileID: 6324510147686238921}
   parallaxSpeed: 0.8
 --- !u!1 &26826489
 GameObject:
@@ -779,7 +779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7473401c023bc8d4c8694bee505cde0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxNew
-  player: {fileID: 0}
+  player: {fileID: 6324510147686238921}
   parallaxSpeed: 0.45
 --- !u!1 &76439303
 GameObject:
@@ -8874,7 +8874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7473401c023bc8d4c8694bee505cde0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxNew
-  player: {fileID: 0}
+  player: {fileID: 6324510147686238921}
   parallaxSpeed: 0.8
 --- !u!1 &409595796
 GameObject:
@@ -10554,7 +10554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7473401c023bc8d4c8694bee505cde0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxNew
-  player: {fileID: 0}
+  player: {fileID: 6324510147686238921}
   parallaxSpeed: 0.45
 --- !u!1 &563337780
 GameObject:
@@ -10767,7 +10767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7473401c023bc8d4c8694bee505cde0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxNew
-  player: {fileID: 0}
+  player: {fileID: 6324510147686238921}
   parallaxSpeed: 0.2
 --- !u!1 &579368089
 GameObject:
@@ -11776,7 +11776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7473401c023bc8d4c8694bee505cde0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxNew
-  player: {fileID: 0}
+  player: {fileID: 6324510147686238921}
   parallaxSpeed: 0.35
 --- !u!1 &691980962
 GameObject:
@@ -12811,7 +12811,6 @@ GameObject:
   m_Component:
   - component: {fileID: 797902508}
   - component: {fileID: 797902507}
-  - component: {fileID: 797902509}
   m_Layer: 0
   m_Name: BirdSpawner
   m_TagString: Untagged
@@ -12855,21 +12854,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &797902509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 797902506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1129f73b568e24941927b70a718ef13b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Ending
-  credits: {fileID: 0}
-  mainMenuButton: []
-  pauseMenuUI: {fileID: 1958194759743129253}
 --- !u!1 &801405856
 GameObject:
   m_ObjectHideFlags: 0
@@ -13114,7 +13098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7473401c023bc8d4c8694bee505cde0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxNew
-  player: {fileID: 0}
+  player: {fileID: 6324510147686238921}
   parallaxSpeed: 0.35
 --- !u!1 &827284285
 GameObject:
@@ -15548,7 +15532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7473401c023bc8d4c8694bee505cde0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxNew
-  player: {fileID: 0}
+  player: {fileID: 6324510147686238921}
   parallaxSpeed: 0.2
 --- !u!1 &1089161481
 GameObject:
@@ -20336,7 +20320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7473401c023bc8d4c8694bee505cde0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxNew
-  player: {fileID: 0}
+  player: {fileID: 6324510147686238921}
   parallaxSpeed: 0.6
 --- !u!1 &1458723480
 GameObject:
@@ -27418,7 +27402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7473401c023bc8d4c8694bee505cde0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxNew
-  player: {fileID: 0}
+  player: {fileID: 6324510147686238921}
   parallaxSpeed: 0.6
 --- !u!1 &1784460650
 GameObject:
@@ -36098,21 +36082,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &119777120846783935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109748440688516203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd3f97f9d1a425f469de1e0e7fbb12f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PotionCountUI
-  potionInventory: {fileID: 8840421793722723321}
-  potionCountText: {fileID: 1994911851507995774}
-  label: Potion
 --- !u!114 &122419456464772363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36285,7 +36254,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 797902509}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Ending, Assembly-CSharp
         m_MethodName: mainMenu
         m_Mode: 1
@@ -43211,7 +43180,7 @@ GameObject:
   - component: {fileID: 6083759108068689172}
   - component: {fileID: 3505214757655635751}
   - component: {fileID: 4855404860171926585}
-  - component: {fileID: 119777120846783935}
+  - component: {fileID: 6083759108068689173}
   m_Layer: 5
   m_Name: PotionUI
   m_TagString: Untagged
@@ -46582,7 +46551,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 797902509}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Ending, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -48480,6 +48449,21 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &6083759108068689173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109748440688516203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b182f7cc22dc489ebd2c37f8017e91c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PotionCountUI
+  potionInventory: {fileID: 8840421793722723321}
+  potionCountText: {fileID: 1994911851507995774}
+  label: Potion
 --- !u!224 &6098193194812749569
 RectTransform:
   m_ObjectHideFlags: 0
@@ -51850,7 +51834,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1349541917925195805}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0a384d919f25b249b014f1629127763, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a9d24fd3f6d4f348946f1a7d6aa1b3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPotionInventory
   startingPotions: 0
