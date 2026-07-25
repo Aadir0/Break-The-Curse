@@ -1751,7 +1751,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -22266,14 +22266,14 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 1.5
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -28016,7 +28016,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -36933,7 +36933,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -42697,7 +42697,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3760903782713211687}
   - component: {fileID: 7140414709997631385}
-  - component: {fileID: 2731808966444558909}
+  - component: {fileID: 7140414709997631386}
   m_Layer: 0
   m_Name: Switch2
   m_TagString: Untagged
@@ -43062,7 +43062,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2023674468364901814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44184,19 +44184,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3721771140295322795}
   m_CullTransparentMesh: 1
---- !u!114 &2731808966444558909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1746855202427429225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eae7d27b976b6f946a5cf0ecbd5421c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StartDisplay
-  CanvasConttroller: {fileID: 4094005260126174278}
 --- !u!1 &2753379779808918908
 GameObject:
   m_ObjectHideFlags: 0
@@ -45777,7 +45764,7 @@ MonoBehaviour:
 
 
     Thank you for playing.'
-  wordDelay: 0.12
+  wordDelay: 0.08
   sentencePause: 2
   continuePrompt: Press Space to Continue
 --- !u!1 &4121744539241431044
@@ -47597,9 +47584,9 @@ RectTransform:
   - {fileID: 5733128458353628351}
   m_Father: {fileID: 4327706531220826392}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 8.457703, y: 3.7375488}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 960, y: -540}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!61 &5296703577002208738
@@ -49669,6 +49656,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.29603577, y: 8.391658}
   m_EdgeRadius: 0
+--- !u!114 &7140414709997631386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746855202427429225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 563848ff944599b429d7974c99b0888d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewDisplay
+  CanvasConttroller: {fileID: 4094005260126174278}
 --- !u!1 &7179289020620495767
 GameObject:
   m_ObjectHideFlags: 0

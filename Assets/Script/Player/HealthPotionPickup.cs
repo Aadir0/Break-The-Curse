@@ -31,12 +31,12 @@ public class HealthPotionPickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Player"))
+        if (!IsPlayer(other))
         {
             return;
         }
 
-        PlayerPotionInventory inventory = other.GetComponentInParent<PlayerPotionInventory>();
+        PlayerPotionInventory inventory = FindInventoryForPickup(other);
 
         if (inventory == null)
         {
@@ -49,6 +49,33 @@ public class HealthPotionPickup : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private static bool IsPlayer(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            return true;
+        }
+
+        Transform parent = other.transform.parent;
+        return parent != null && parent.CompareTag("Player");
+    }
+
+    private static PlayerPotionInventory FindInventoryForPickup(Collider2D other)
+    {
+        PlayerPotionInventory inventory = other.GetComponentInParent<PlayerPotionInventory>();
+
+        if (inventory != null)
+        {
+            return inventory;
+        }
+
+        PlayerPotionInventory[] inventories = FindObjectsByType<PlayerPotionInventory>(
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None);
+
+        return inventories.Length > 0 ? inventories[0] : null;
     }
 
     private void EnsureVisual()

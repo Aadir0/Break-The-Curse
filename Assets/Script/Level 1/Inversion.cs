@@ -174,7 +174,7 @@ public class Inversion : MonoBehaviour
 
         if (enemiesRemaining == 0)
         {
-           EndingScene.SetActive(true);
+            EndingScene.SetActive(true);
             UpdatePortalState();
 
             if (isInverted)

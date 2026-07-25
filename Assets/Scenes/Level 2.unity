@@ -30155,7 +30155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4574492732769328836}
   - component: {fileID: 7520289753631593082}
-  - component: {fileID: 3360779545744429022}
+  - component: {fileID: 7520289753631593083}
   m_Layer: 0
   m_Name: Switch2
   m_TagString: Untagged
@@ -31280,9 +31280,9 @@ RectTransform:
   - {fileID: 2012057011943851751}
   m_Father: {fileID: 765942036338078626}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -23.747864, y: -1.3338013}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 960, y: -540}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2107680711106413751
@@ -32136,19 +32136,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8386418752687523943}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3360779545744429022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1401927327589565578}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eae7d27b976b6f946a5cf0ecbd5421c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StartDisplay
-  CanvasConttroller: {fileID: 4697772605326470147}
 --- !u!50 &3415759347180594251
 Rigidbody2D:
   serializedVersion: 5
@@ -33553,7 +33540,7 @@ MonoBehaviour:
 
     One final
     battle remains...'
-  wordDelay: 0.12
+  wordDelay: 0.08
   sentencePause: 2
   continuePrompt: Press Space to Continue
 --- !u!4 &4729914028050433784
@@ -36878,7 +36865,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!222 &7362300779299634263
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -37121,6 +37108,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.29603577, y: 8.391658}
   m_EdgeRadius: 0
+--- !u!114 &7520289753631593083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401927327589565578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 563848ff944599b429d7974c99b0888d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewDisplay
+  CanvasConttroller: {fileID: 4697772605326470147}
 --- !u!1 &7528532166466373172
 GameObject:
   m_ObjectHideFlags: 0

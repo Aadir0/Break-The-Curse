@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(PlayerHealth))]
 public class PlayerPotionInventory : MonoBehaviour
 {
     [SerializeField] private int startingPotions;
@@ -19,15 +18,14 @@ public class PlayerPotionInventory : MonoBehaviour
 
     private PlayerHealth playerHealth;
     private int currentPotions;
+    private bool hasInitialized;
 
     public int CurrentPotions => currentPotions;
     public int MaxPotions => maxPotions;
 
     private void Awake()
     {
-        playerHealth = GetComponent<PlayerHealth>();
-        maxPotions = Mathf.Max(1, maxPotions);
-        currentPotions = Mathf.Clamp(startingPotions, 0, maxPotions);
+        Initialize();
     }
 
     private void OnValidate()
@@ -39,11 +37,14 @@ public class PlayerPotionInventory : MonoBehaviour
 
     private void Start()
     {
+        Initialize();
         onPotionCountChanged?.Invoke(currentPotions, maxPotions);
     }
 
     private void Update()
     {
+        Initialize();
+
         if (Input.GetKeyDown(consumeKey))
         {
             UsePotion();
@@ -52,6 +53,8 @@ public class PlayerPotionInventory : MonoBehaviour
 
     public bool AddPotion(int amount = 1)
     {
+        Initialize();
+
         if (amount <= 0 || currentPotions >= maxPotions)
         {
             return false;
@@ -65,6 +68,8 @@ public class PlayerPotionInventory : MonoBehaviour
 
     public bool UsePotion()
     {
+        Initialize();
+
         if (currentPotions <= 0 || playerHealth == null || playerHealth.IsDead)
         {
             return false;
@@ -80,5 +85,18 @@ public class PlayerPotionInventory : MonoBehaviour
         onPotionUsed?.Invoke();
         onPotionCountChanged?.Invoke(currentPotions, maxPotions);
         return true;
+    }
+
+    private void Initialize()
+    {
+        if (hasInitialized)
+        {
+            return;
+        }
+
+        playerHealth = GetComponent<PlayerHealth>();
+        maxPotions = Mathf.Max(1, maxPotions);
+        currentPotions = Mathf.Clamp(startingPotions, 0, maxPotions);
+        hasInitialized = true;
     }
 }
