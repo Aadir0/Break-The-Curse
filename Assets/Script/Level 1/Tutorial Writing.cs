@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class TutorialWriting : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class TutorialWriting : MonoBehaviour
     [SerializeField] private float wordDelay = 0.12f;
     [SerializeField] private float sentencePause = 2f;
     [SerializeField] private string continuePrompt = "Press Space to Continue";
+    [SerializeField] private int endingSceneBuildIndex = 4;
+    [SerializeField] private int mainMenuSceneBuildIndex = 0;
 
     private int currentSentenceIndex;
     private Coroutine typingRoutine;
@@ -90,7 +93,7 @@ public class TutorialWriting : MonoBehaviour
             return;
         }
 
-        HideCanvas();
+        CompleteAllSentences();
     }
 
     private void ActivateCanvas()
@@ -273,7 +276,7 @@ public class TutorialWriting : MonoBehaviour
             return;
         }
 
-        HideCanvas();
+        CompleteAllSentences();
     }
 
     private void StopPauseRoutine()
@@ -285,6 +288,16 @@ public class TutorialWriting : MonoBehaviour
 
         StopCoroutine(pauseRoutine);
         pauseRoutine = null;
+    }
+
+    private void CompleteAllSentences()
+    {
+        HideCanvas();
+
+        if (SceneManager.GetActiveScene().buildIndex == endingSceneBuildIndex)
+        {
+            SceneManager.LoadScene(mainMenuSceneBuildIndex);
+        }
     }
 
     private void DisableBackgroundMovement()

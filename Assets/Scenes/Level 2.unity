@@ -29448,6 +29448,8 @@ MonoBehaviour:
   wordDelay: 0.08
   sentencePause: 2
   continuePrompt: Press Space to Continue
+  endingSceneBuildIndex: 4
+  mainMenuSceneBuildIndex: 0
 --- !u!114 &845681189610704455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33038,7 +33040,7 @@ MonoBehaviour:
   wallJumpAnimationRestartBeforeFrame: 3
   rb: {fileID: 6325209256805173148}
   anim: {fileID: 5854228102571500632}
-  deathCanvas: {fileID: 0}
+  deathCanvas: {fileID: 4659136163834951371}
   bloodEffectPrefab: {fileID: 358610227586400739, guid: 15d9a4239412af74dbcd20da49d811ad, type: 3}
   noBlood: 0
   playerAttack: {fileID: 1261744739659790007}
@@ -33543,6 +33545,8 @@ MonoBehaviour:
   wordDelay: 0.08
   sentencePause: 2
   continuePrompt: Press Space to Continue
+  endingSceneBuildIndex: 4
+  mainMenuSceneBuildIndex: 0
 --- !u!4 &4729914028050433784
 Transform:
   m_ObjectHideFlags: 0
